@@ -1,7 +1,7 @@
 FROM ubuntu:trusty
 MAINTAINER Cheewai Lai <clai@csir.co.za>
 
-ARG GOSU_VERSION=1.9
+ARG GOSU_VERSION=1.10
 ARG GOSU_DOWNLOAD_URL="https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64"
 ARG S6_OVERLAY_VERSION=v1.17.2.0
 ARG DEBIAN_FRONTEND=noninteractive
@@ -36,6 +36,7 @@ RUN sed 's/main$/main universe multiverse/' -i /etc/apt/sources.list \
  && pip install subprocess32 \
  && pip install rethinkdb \
  && pip install dateutils \
+ && pip install raven --upgrade \
  && apt-get -y install python-yaml python-gdal libgdal1h gdal-bin libspatialindex-dev \
  && pip install rtree \
  && apt-get -y remove --purge software-properties-common build-essential git python-dev \
