@@ -15,7 +15,7 @@ RUN sed 's/main$/main universe multiverse/' -i /etc/apt/sources.list \
  && apt-get update \
  && apt-get -y upgrade \
  && apt-get install -y curl software-properties-common wget unzip build-essential git python python-dev python-setuptools \
- && curl -o gosu -fsSL "$GOSU_DOWNLOAD_URL" > gosu-amd64 \
+ && curl -o gosu -kfsSL "$GOSU_DOWNLOAD_URL" \
  && mv gosu /usr/bin/gosu \
  && chmod +x /usr/bin/gosu \
  && curl -sSL https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz | tar xfz - -C / \
@@ -36,10 +36,12 @@ RUN sed 's/main$/main universe multiverse/' -i /etc/apt/sources.list \
  && pip install subprocess32 \
  && pip install rethinkdb \
  && pip install dateutils \
- && pip install raven --upgrade \
+ && pip install blinker raven --upgrade \
  && apt-get -y install python-yaml python-gdal libgdal1h gdal-bin libspatialindex-dev \
  && pip install rtree \
  && apt-get -y remove --purge software-properties-common build-essential git python-dev \
  && apt-get -y autoremove \
  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod 755 /docker-entrypoint.sh \
+ && chown root.root /docker-entrypoint.sh
