@@ -37,6 +37,7 @@ RUN sed 's/main$/main universe multiverse/' -i /etc/apt/sources.list \
  && pip install rethinkdb \
  && pip install dateutils \
  && pip install blinker raven --upgrade \
+ && pip install redis rq \
  && apt-get -y install python-yaml python-gdal libgdal1h gdal-bin libspatialindex-dev \
  && pip install rtree \
  && apt-get -y remove --purge software-properties-common build-essential git python-dev \
