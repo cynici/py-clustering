@@ -30,6 +30,7 @@ RUN sed 's/main$/main universe multiverse/' -i /etc/apt/sources.list \
  && pip install Shapely \
  && pip install geopy>=1.10.0 \
  && pip install pika \
+ && pip install kombu \
  && pip install librabbitmq \
  && pip install python-daemon \
  && pip install pyproj \
@@ -47,5 +48,4 @@ RUN sed 's/main$/main universe multiverse/' -i /etc/apt/sources.list \
  && apt-get -y autoremove \
  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod 755 /docker-entrypoint.sh \
- && chown root.root /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
