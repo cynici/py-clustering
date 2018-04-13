@@ -23,8 +23,9 @@ RUN sed 's/main$/main universe multiverse/' -i /etc/apt/sources.list \
  && curl -k -fsSL https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz | tar xfz - -C /usr/bin \
  && easy_install pip \
  && pip install --upgrade pip \
- && apt-get install -y python-numpy libatlas-dev libatlas3gf-base liblapack3gf liblapack-dev gfortran python-psycopg2 libgeos-3.4.2 libgeos-dev \
+ && apt-get install -y libatlas-dev libatlas3gf-base liblapack3gf liblapack-dev gfortran python-psycopg2 libgeos-3.4.2 libgeos-dev \
  && ldconfig \
+ && pip install numpy \
  && pip install scipy>=0.12.0 \
  && pip install scikit-learn>=0.14.0 \
  && pip install Shapely \
