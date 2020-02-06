@@ -26,7 +26,6 @@ RUN apt-get update \
     python3-shapely \
     python3-rtree \
     python3-pytest \
-    python3-yaml \
     gdal-bin python3-gdal \
  && curl -o gosu -kfsSL "$GOSU_DOWNLOAD_URL" \
  && mv gosu /usr/bin/gosu \
@@ -39,6 +38,7 @@ RUN apt-get update \
  && pip3 install python-daemon \
  && pip3 install reverse_geocoder \
  && pip3 install python-logstash \
+ && pip3 install PyYAML \
  && pip3 install rethinkdb \
  && pip3 install dateutils \
  && pip3 install blinker raven --upgrade \
